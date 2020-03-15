@@ -26,7 +26,11 @@ const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpack
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 const postcssNormalize = require('postcss-normalize');
 const appPackageJson = require(paths.appPackageJson);
-
+const CompressionPlugin = require('compression-webpack-plugin');
+//const BrotliPlugin = require('brotli-webpack-plugin');
+//const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+//const rewireUglifyjs = require('react-app-rewire-uglifyjs');
+var DedupeString = require('dedupe-string-plugin');
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 // Some apps do not need the benefits of saving a web request, so not inlining the chunk
@@ -252,6 +256,23 @@ module.exports = function(webpackEnv) {
             preset: ['default', { minifyFontValues: { removeQuotes: false } }],
           },
         }),
+        /*isEnvProduction && new UglifyJsPlugin({
+          uglifyOptions:{
+            output: {
+              comments: true, // remove comments
+            },
+            compress: {
+              unused: true,
+              dead_code: true, // big one--strip code that will never execute
+              drop_debugger: true,
+              conditionals: true,
+              evaluate: true,
+              drop_console: true, // strips console statements
+              sequences: true,
+              booleans: true,
+            }
+          },
+        }),*/
       ],
       // Automatically split vendor and commons
       // https://twitter.com/wSokra/status/969633336732905474
@@ -297,6 +318,9 @@ module.exports = function(webpackEnv) {
         ...(modules.webpackAliases || {}),
       },
       plugins: [
+        
+        new DedupeString(),
+        
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding
         // guards against forgotten dependencies and such.
         PnpWebpackPlugin,
@@ -310,8 +334,6 @@ module.exports = function(webpackEnv) {
     },
     resolveLoader: {
       plugins: [
-        // Also related to Plug'n'Play, but this time it tells webpack to load its loaders
-        // from the current package.
         PnpWebpackPlugin.moduleLoader(module),
       ],
     },
@@ -385,7 +407,7 @@ module.exports = function(webpackEnv) {
                 // directory for faster rebuilds.
                 cacheDirectory: true,
                 // See #6846 for context on why cacheCompression is disabled
-                cacheCompression: false,
+                cacheCompression: true,
                 compact: isEnvProduction,
               },
             },
@@ -508,7 +530,27 @@ module.exports = function(webpackEnv) {
       ],
     },
     plugins: [
-      // Generates an `index.html` file with the <script> injected.
+      // Inlines the webpack runtime script. This script is too small to warrant
+      // a network request.
+      // https://github.com/facebook/create-react-app/issues/5358
+      isEnvProduction &&
+        shouldInlineRuntimeChunk &&
+        new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime-.+[.]js/]),
+      // Makes some environment variables available in index.html.
+      // The public URL is available as %PUBLIC_URL% in index.html, e.g.:
+      // <link rel="icon" href="%PUBLIC_URL%/favicon.ico">
+      // It will be an empty string unless you specify "homepage"
+      // in `package.json`, in which case it will be the pathname of that URL.
+      new InterpolateHtmlPlugin(HtmlWebpackPlugin, env.raw),
+      // This gives some necessary context to module not found errors, such as
+      // the requesting resource.
+      new ModuleNotFoundPlugin(paths.appPath),
+      // Makes some environment variables available to the JS code, for example:
+      // if (process.env.NODE_ENV === 'production') { ... }. See `./env.js`.
+      // It is absolutely essential that NODE_ENV is set to production
+      // during a production build.
+      // Otherwise React will be compiled in the very slow development mode.
+      new webpack.DefinePlugin(env.stringified),
       new HtmlWebpackPlugin(
         Object.assign(
           {},
@@ -534,27 +576,22 @@ module.exports = function(webpackEnv) {
             : undefined
         )
       ),
-      // Inlines the webpack runtime script. This script is too small to warrant
-      // a network request.
-      // https://github.com/facebook/create-react-app/issues/5358
-      isEnvProduction &&
-        shouldInlineRuntimeChunk &&
-        new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime-.+[.]js/]),
-      // Makes some environment variables available in index.html.
-      // The public URL is available as %PUBLIC_URL% in index.html, e.g.:
-      // <link rel="icon" href="%PUBLIC_URL%/favicon.ico">
-      // It will be an empty string unless you specify "homepage"
-      // in `package.json`, in which case it will be the pathname of that URL.
-      new InterpolateHtmlPlugin(HtmlWebpackPlugin, env.raw),
-      // This gives some necessary context to module not found errors, such as
-      // the requesting resource.
-      new ModuleNotFoundPlugin(paths.appPath),
-      // Makes some environment variables available to the JS code, for example:
-      // if (process.env.NODE_ENV === 'production') { ... }. See `./env.js`.
-      // It is absolutely essential that NODE_ENV is set to production
-      // during a production build.
-      // Otherwise React will be compiled in the very slow development mode.
-      new webpack.DefinePlugin(env.stringified),
+      //Si se requiere una comprescion de *.js en la produccion , de no ser asi los archivos se pueden comprimir de una manera manual con Gzip-cli
+      /*isEnvProduction && new CompressionPlugin({
+        //asset: "[path].gz[query]",
+        filename :"[path].gz[query]",
+        algorithm: "gzip",
+        test: /\.js$|\.css$|\.html$/,
+        threshold: 10240,
+        minRatio: 0.8
+      }),*/
+      /*new BrotliPlugin({
+          asset: "[path].br[query]",
+          fileName: "[path].br[query]",
+          test: /\.js$|\.css$|\.html$/,
+          threshold: 10240,
+          minRatio: 0.8
+      }),*/
       // This is necessary to emit hot updates (currently CSS only):
       isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
       // Watcher doesn't work well if you mistype casing in a path so we use
