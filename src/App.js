@@ -1,24 +1,19 @@
-import React , { useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
+import DatosMundiales from './DatosMundiales'
+import DatosPeru from './DatosPeru'
+import DatosRegionesPeru from './DatosRegionesPeru'
 
-function App() {
+function App (){
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-        Proyecto de Jose Cueva Celis con  <code>ReactJS.</code>
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar />
+      <DatosMundiales />
+      <DatosPeru />
+      <DatosRegionesPeru />
+      <Footer />
     </div>
   );
 }
