@@ -23,9 +23,9 @@ export default function DatosMundiales() {
                 <div className=" text-center">
                     
                     <section className="jumbotron text-center">
-                        <div className="Container">
+                        <div className="container">
                             <img className="d-block mx-auto mb-4" src={logo} alt="imgCovid19"/>
-                            <h1 className="display-2">Coronavirus en el Perú</h1>
+                            <h1 className="display-4">Coronavirus en el Perú</h1>
                             <p className="lead">Aquí encontrarás información y noticias sobre el COVID-19 en Perú y en el mundo.🦠</p>
                             <p className="lead text-muted">(Mantenemos actualizada nuestra información a diario.) </p>
                         </div>
