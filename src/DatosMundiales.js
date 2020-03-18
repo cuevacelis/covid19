@@ -9,6 +9,7 @@ function DatosMundiales() {
     //alert("3")
     useEffect( () => {
         const ObtencionDatos = async () =>{
+            setLoadingMundial(true);
             //alert("4")
             const respuesta = await fetch("https://proyectosupnjose.website/api/coronavirus/total")
             //alert("5")
