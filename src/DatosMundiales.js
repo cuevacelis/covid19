@@ -1,22 +1,29 @@
-"use strict";
 import React, {useState,useEffect} from 'react';
 import logo from './logo.svg'
-
-const useFetch = (url) => {
-    const [dataMundial, setdataMundial] = useState(null);
+//alert("1")
+function DatosMundiales() {
+    //alert("2")
+    const [dataMundial, setdataMundial] = useState({ array: [] });
     const [loadingMundial, setLoadingMundial] = useState(true);
-    //Similar a comonente DidMount y DidUpdate
-    useEffect(async () => {
-      const response = await fetch(url)
-      const dataMundial = await response.json()
-      setdataMundial(dataMundial);
-      setLoadingMundial(false);
-    }, []);
-    return {dataMundial, loadingMundial};
-  };
-
-export default function DatosMundiales() {
-    const {dataMundial,loadingMundial} = useFetch("https://proyectosupnjose.website/api/coronavirus/total")
+    const [actualizarComponente, setActualizarComponente] = useState(false);
+    //alert("3")
+    useEffect( () => {
+        const ObtencionDatos = async () =>{
+            //alert("4")
+            const respuesta = await fetch("https://proyectosupnjose.website/api/coronavirus/total")
+            //alert("5")
+            const resultadoJSON = await respuesta.json()
+            //alert("6")
+            setdataMundial(resultadoJSON);
+            //alert("8")
+            setLoadingMundial(false);
+            //alert("9")
+            setActualizarComponente(false);
+            //alert("9.1")
+        }
+        ObtencionDatos();
+    }, [actualizarComponente]);
+    //alert("10")
     return (
         <div>
             <section className="DatosMundiales">
@@ -27,7 +34,7 @@ export default function DatosMundiales() {
                             <img className="d-block mx-auto mb-4" src={logo} alt="imgCovid19"/>
                             <h1 className="display-4">Coronavirus en el Perú</h1>
                             <p className="lead">Aquí encontrarás información y noticias sobre el COVID-19 en Perú y en el mundo.🦠</p>
-                            <p className="lead text-muted">(Mantenemos actualizada nuestra información a diario.) </p>
+                            <p className="text-muted"><em>(Mantenemos actualizada nuestra información a diario)</em> </p>
                         </div>
 
                     </section>
@@ -35,7 +42,11 @@ export default function DatosMundiales() {
                     <section className="jumbotron text-center">
                         <div className="container">
                             <h1 className="display-4">Datos del Mundo 🗺️</h1>
-                            <p className="lead text-muted">(Mantenemos actualizada nuestra información a diario.) </p>
+                            <p className="text-muted">
+                                <em>(Mantenemos actualizada nuestra información a diario)</em> 
+                                <button className="btn btn-outline-secondary" onClick={() => setActualizarComponente(true)}>Actualizar información ahora</button>
+                            </p>
+                            
                             <div className="row">
                                 <div className="col-md-4">
                                     <h2>Casos de Coronavirus</h2>
@@ -67,3 +78,4 @@ export default function DatosMundiales() {
         </div>
     )
 }
+export default DatosMundiales

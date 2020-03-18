@@ -1,34 +1,37 @@
-"use strict";
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 export default function DatosPeru() {
     const [data, setData] = useState({ hits: [] });
     const [loadingMundial, setIsLoadingMundial] = useState(false);
+    const [actualizarComponente, setActualizarComponente] = useState(false);
 
-    useEffect(async () => {
-        setIsLoadingMundial(true);
-        const result = await axios(
-            'https://proyectosupnjose.website/api/coronavirus/countries',
-        );
-        
-        var x=0;
-        for(x=0; x<result.data.length; x++) {
-            if(result.data[x].country == 'Peru'){
-                setData(result.data[x]);
+    useEffect( () => {
+        const ObtensionDatos = async () =>{
+            const result = await axios(
+                'https://proyectosupnjose.website/api/coronavirus/countries',
+            );
+            var x=0;
+            for(x=0; x<result.data.length; x++) {
+                if(result.data[x].country === 'Peru'){
+                    setData(result.data[x]);
+                }
+            setIsLoadingMundial(false);
             }
-        
-        setIsLoadingMundial(false);
-    }
+        }
+        ObtensionDatos();
 
-    }, []);
+    }, [actualizarComponente]);
 
     return (
         <div>
             <section className="jumbotron text-center DatosPeru">
                 <div className=" text-center">
                     <h1 className="display-4">Datos del Perú 🇵🇪</h1>
-                    <p className="lead text-muted">(Mantenemos actualizada nuestra información a diario.) </p>
+                    <p className="text-muted">
+                        <em>(Mantenemos actualizada nuestra información a diario)</em> 
+                        <button className="btn btn-outline-secondary" onClick={() => setActualizarComponente(true)}>Actualizar información ahora</button>
+                    </p>
                     <div className="container">
                         <div className="row">
                         <div className="col-md-4">
