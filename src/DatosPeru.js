@@ -30,10 +30,10 @@ export default function DatosPeru() {
             <section className="jumbotron text-center DatosPeru">
                 <div className=" text-center">
                     <h1 className="display-4">Datos del Perú 🇵🇪</h1>
-                    <p className="text-muted">
-                        <em>(Mantenemos actualizada nuestra información a diario)</em> 
-                        <button className="btn btn-outline-secondary" onClick={() => setActualizarComponente(true)}>Actualizar información ahora</button>
-                    </p>
+                    <div className="my-3 p-3">
+                        <p className="text-muted"><em>(Mantenemos actualizada nuestra información a diario)</em></p>
+                        <button className="btn btn-primary" onClick={() => setActualizarComponente(true)}>Actualizar información ahora</button>
+                    </div>
                     <div className="container">
                         <div className="row">
                         <div className="col-md-4">
@@ -54,7 +54,7 @@ export default function DatosPeru() {
                             <h2>Muertes</h2>
                             <p>Total de muertes causadas por el <code>Covid-19</code> en el Perú.</p>
                             <div className="deathsPeru" style={{color:"red" }}>
-                            {loadingPeru ? <div className="spinner-border text-primary" role="status"></div>  : <h4 className="">{dataPeru.totalDeaths}</h4>}
+                            {loadingPeru ? <div className="spinner-border text-secondary" role="status"></div>  : <h4 className="">{dataPeru.totalDeaths}</h4>}
                             </div>
                         </div>
                         <div className="col-md-4">
@@ -68,7 +68,7 @@ export default function DatosPeru() {
                             <h2>Casos recuperados</h2>
                             <p>La cantidad de personas que se recuperaron del <code>Covid-19</code> en el Perú</p>
                             <div className="recoveredPeru" style={{color:"green" }}>
-                            {loadingPeru ? <div className="spinner-border text-primary" role="status"></div>  : <h4 className="">-{dataPeru.totalRecovered}-</h4>}
+                            {loadingPeru ? <div className="spinner-border text-success" role="status"></div>  : <h4 className="">-{dataPeru.totalRecovered}-</h4>}
                             </div>
                         </div>
                         </div>

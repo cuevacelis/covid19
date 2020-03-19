@@ -43,10 +43,11 @@ function DatosMundiales() {
                     <section className="jumbotron text-center">
                         <div className="container">
                             <h1 className="display-4">Datos del Mundo 🗺️</h1>
-                            <p className="text-muted">
-                                <em>(Mantenemos actualizada nuestra información a diario)</em> 
-                                <button className="btn btn-outline-secondary" onClick={() => setActualizarComponente(true)}>Actualizar información ahora</button>
-                            </p>
+                            <div className="my-3 p-3">
+                                <p className="text-muted"><em>(Mantenemos actualizada nuestra información a diario)</em></p>
+                                <button className="btn btn-primary" onClick={() => setActualizarComponente(true)}>Actualizar información ahora</button>
+                            </div>
+                            
                             
                             <div className="row">
                                 <div className="col-md-4">
@@ -60,14 +61,14 @@ function DatosMundiales() {
                                     <h2>Muertes</h2>
                                     <p>La cantidad de muertes causadas por el <code>Covid-19</code> en todo el mundo.</p>
                                     <div className="deaths" style={{color:"red" }}>
-                                    {loadingMundial ?<div className="spinner-border text-primary" role="status"></div>  : <h4 className="">{dataMundial.deaths}</h4>}
+                                    {loadingMundial ?<div className="spinner-border text-danger" role="status"></div>  : <h4 className="">{dataMundial.deaths}</h4>}
                                     </div>
                                 </div>
                                 <div className="col-md-4">
                                     <h2>Casos recuperados</h2>
                                     <p>La cantidad de personas que se recuperaron del <code>Covid-19</code></p>
                                     <div className="recovered" style={{color:"green" }}>
-                                    {loadingMundial ? <div className="spinner-border text-sucess" role="status"></div> : <h4 className="">{dataMundial.recovered}</h4>}
+                                    {loadingMundial ? <div className="spinner-border text-success" role="status"></div> : <h4 className="">{dataMundial.recovered}</h4>}
                                     </div>
                                 </div>
                             </div>
