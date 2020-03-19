@@ -59,7 +59,7 @@ export default function DatosPeru() {
                         </div>
                         <div className="col-md-4">
                             <h2>Casos Serios</h2>
-                            <p>Total de muertes causadas por el <code>Covid-19</code> en el Perú.</p>
+                            <p>Total de casos graves ocasionados por el <code>Covid-19</code> en el Perú.</p>
                             <div className="deathsPeru">
                             {loadingPeru ? <div className="spinner-border text-primary" role="status"></div>  : <h4 className="">-{dataPeru.serious}-</h4>}
                             </div>
