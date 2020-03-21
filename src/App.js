@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import DatosMundiales from './DatosMundiales'
-import DatosPeru from './DatosPeru'
+import DatosCountry from './DatosCountry'
 import DatosRegionesPeru from './DatosRegionesPeru'
 
 function App (){
@@ -11,7 +11,7 @@ function App (){
     <div>
       <Navbar />
       <DatosMundiales />
-      <DatosPeru />
+      <DatosCountry />
       <DatosRegionesPeru />
       <Footer />
     </div>
