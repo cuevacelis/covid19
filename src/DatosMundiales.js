@@ -3,7 +3,7 @@ import logo from './logo.svg'
 //alert("1")
 function DatosMundiales() {
     //alert("2")
-    const [dataMundial, setdataMundial] = useState({ array: [] });
+    const [dataMundial, setdataMundial] = useState({});
     const [loadingMundial, setLoadingMundial] = useState(true);
     const [actualizarComponente, setActualizarComponente] = useState(false);
     //alert("3")
@@ -19,7 +19,7 @@ function DatosMundiales() {
             //alert("8")
             setLoadingMundial(false);
             //alert("9")
-            setActualizarComponente(false);
+            //setActualizarComponente(false);
             //alert("9.1")
         }
         ObtencionDatos();
@@ -45,7 +45,7 @@ function DatosMundiales() {
                             <h1 className="display-4">Datos del Mundo 🗺️</h1>
                             <div className="my-3 p-3">
                                 <p className="text-muted"><em>(Mantenemos actualizada nuestra información a diario)</em></p>
-                                <button className="btn btn-primary" onClick={() => setActualizarComponente(true)}>Actualizar información ahora</button>
+                                <button className="btn btn-primary" onClick={() => setActualizarComponente(!actualizarComponente)} >Actualizar información ahora</button>
                             </div>
                             
                             
