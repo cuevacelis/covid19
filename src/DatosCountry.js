@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useLayoutEffect } from 'react';
+import React, { useState, useEffect,prevState } from 'react';
 import axios from 'axios';
 //alert("1")
 function DatosCountry() {
@@ -8,7 +8,7 @@ function DatosCountry() {
     const [actualizarComponente, setActualizarComponente] = useState(false);
     const [unaVez, setUnaVez] = useState(true);
 
-    useLayoutEffect( () => {
+    useEffect( () => {
         //alert("2")
         const ObtensionDatos = async () =>{
             //alert("2.1")
@@ -33,6 +33,7 @@ function DatosCountry() {
         }
         ObtensionDatos();
     }, [actualizarComponente]);
+    //console.log(prevState)
 
     return (
         <div>
