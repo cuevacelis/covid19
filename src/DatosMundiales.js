@@ -1,4 +1,5 @@
 import React, {useState,useEffect} from 'react';
+import axios from 'axios';
 import logo from './logo.svg'
 //alert("1")
 function DatosMundiales() {
@@ -11,16 +12,14 @@ function DatosMundiales() {
         const ObtencionDatos = async () =>{
             setLoadingMundial(true);
             //alert("4")
-            const respuesta = await fetch("https://proyectosupnjose.website/api/coronavirus/total")
-            //alert("5")
-            const resultadoJSON = await respuesta.json()
+            const resultadoJSON = await axios(
+                'https://proyectosupnjose.website/api/coronavirus/total',
+            );
             //alert("6")
-            setdataMundial(resultadoJSON);
+            setdataMundial(resultadoJSON.data);
             //alert("8")
             setLoadingMundial(false);
             //alert("9")
-            //setActualizarComponente(false);
-            //alert("9.1")
         }
         ObtencionDatos();
     }, [actualizarComponente]);
@@ -32,7 +31,7 @@ function DatosMundiales() {
                     
                     <section className="jumbotron text-center">
                         <div className="container">
-                            <img className="d-block mx-auto mb-4" src={logo} alt="imgCovid19"/>
+                            <img className="d-block mx-auto mb-4" src={logo} alt="imgCovid19" />
                             <h1 className="display-4">Coronavirus en el Perú</h1>
                             <p className="lead">Aquí encontrarás información y noticias sobre el COVID-19 en Perú y en el mundo.🦠</p>
                             <p className="text-muted"><em>(Mantenemos actualizada nuestra información a diario)</em> </p>

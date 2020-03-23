@@ -1,22 +1,37 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { useState, useEffect,useLayoutEffect } from 'react';
 import axios from 'axios';
-
+//alert("1")
 function DatosCountry() {
-    const [datosCountry, setDatosCountry] = useState([{}]);
-    const [indexDatosCountry, setIndexDatosCountry] = useState(43);
+    const [datosCountry, setDatosCountry] = useState([]);
+    const [indexDatosCountry, setIndexDatosCountry] = useState(0);
     const [loadingCounrty, setLoadingCountry] = useState(true);
     const [actualizarComponente, setActualizarComponente] = useState(false);
-    useEffect( () => {
+    const [unaVez, setUnaVez] = useState(true);
+
+    useLayoutEffect( () => {
+        //alert("2")
         const ObtensionDatos = async () =>{
+            //alert("2.1")
             setLoadingCountry(true);
-            const result = await axios(
+            //alert("2.2")
+            const datos = await axios(
                 'https://proyectosupnjose.website/api/coronavirus/countries',
             );
-            setDatosCountry(result.data)
+            //alert("2.3")
+            setDatosCountry(datos.data)
+            //alert("2.6")
             setLoadingCountry(false)
+
+            if(unaVez===true){
+                datos.data.filter( (datoCountry,index) =>{
+                    if(datoCountry.country==='Peru'){
+                        setIndexDatosCountry(index)
+                    }
+                })
+                setUnaVez(false)
+            }        
         }
         ObtensionDatos();
-
     }, [actualizarComponente]);
 
     return (
@@ -26,19 +41,19 @@ function DatosCountry() {
 
                     <div className="container form-group">
                         <label className="display-4">Selecciona tu País :</label>
-                        <select id="select_country" className="form-control" onChange={e => setIndexDatosCountry(e.currentTarget.value)}>
+                        <select id="select_country" data-live-search="true" data-show-subtext="true" className="form-control" onChange={e => setIndexDatosCountry(e.currentTarget.value)}>
                             {
+                                loadingCounrty ?
+                                    <option>Obteniendo datos ...</option>
+                                :
                                 datosCountry.map((datoCountry,index) => (
-                                    <option key={index} selected={index===indexDatosCountry} value={index}>{datoCountry.country +" - "+ "Top: "+(index+1)}</option>
+                                    <option key={index} selected={index==indexDatosCountry} value={index}>{datoCountry.country +" - "+ "Top: "+(index+1)}</option>
                                     )
                                 )
                             }
                         </select>
                     </div>
-                    {
-                        console.log()
-                    }
-
+                    
                     {loadingCounrty ? <h1 className="display-4">Cargando ...</h1>  : <h1 className="display-4">Datos de {datosCountry[indexDatosCountry].country}</h1>}
                     <div className="my-3">
                         <p className="text-muted"><em>(Mantenemos actualizada nuestra información a diario)</em></p>

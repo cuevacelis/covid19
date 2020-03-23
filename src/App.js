@@ -12,6 +12,7 @@ function App (){
       <Navbar />
       <DatosMundiales />
       <DatosCountry />
+      <DatosRegionesPeru />
       <Footer />
     </div>
   );
