@@ -4,6 +4,7 @@ import Footer from './components/Footer'
 import DatosMundiales from './DatosMundiales'
 import DatosCountry from './DatosCountry'
 import DatosRegionesPeru from './DatosRegionesPeru'
+import './index.css'
 
 function App (){
   
