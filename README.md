@@ -2,7 +2,7 @@ Este proyecto fue arrancado con [Create React App](https://github.com/facebook/c
 
 # Actualización
 
-Este proyecto personal fue convertido en una Organizacion, sigue el nuevo enlace [AQUI](https://github.com/Covid19-Peru/Covid19-Peru).
+Este proyecto personal fue convertido en una Organización, sigue el nuevo enlace [AQUI](https://github.com/Covid19-Peru/Covid19-Peru).
 
 ## Description
 
