@@ -8,7 +8,7 @@ Este proyecto personal fue convertido en una Organización, sigue el nuevo enlac
 
 El presente repositorio cuyo fin y objetivo es el de mantener informado al usurio final con respecto al tema del "Covid19".
 
-### Instalar
+### Install
 
 Descargar:
 ```bash
