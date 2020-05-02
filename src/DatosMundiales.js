@@ -26,6 +26,17 @@ function DatosMundiales() {
     //alert("10")
     return (
         <>
+            <div className="DatosRegiones container">
+                <section className="DatosRegionesPeru text-center">
+                    <div className=" text-center">
+                        <h2 className="display-4">Visita la nueva Web</h2>
+                        <div className="container">
+                            <a href="https://covid19-peru.github.io/Covid19-Peru/#/">Click aqui</a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <hr></hr>
             <section className="DatosMundiales">
                 <div className=" text-center">
                     

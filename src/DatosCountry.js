@@ -32,7 +32,7 @@ function DatosCountry() {
             }        
         }
         ObtensionDatos();
-    }, [actualizarComponente]);
+    }, [actualizarComponente, unaVez]);
     //console.log(prevState)
 
     return (
