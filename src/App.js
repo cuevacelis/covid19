@@ -7,7 +7,6 @@ import DatosRegionesPeru from './DatosRegionesPeru'
 import './index.css'
 
 function App (){
-  
   return (
     <div>
       <Navbar />
