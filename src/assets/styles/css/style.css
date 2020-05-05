@@ -1,0 +1,41 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('./../../fonts/icomoon.eot?tdv7p3');
+  src:  url('./../../fonts/icomoon.eot?tdv7p3#iefix') format('embedded-opentype'),
+    url('./../../fonts/icomoon.ttf?tdv7p3') format('truetype'),
+    url('./../../fonts/icomoon.woff?tdv7p3') format('woff'),
+    url('./../../fonts/icomoon.svg?tdv7p3#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'icomoon' !important;
+}
+.icon-facebook:before {
+  content: "\ea90";
+}
+.icon-whatsapp:before {
+  content: "\ea93";
+}
+.icon-twitter:before { 
+  content: "\ea96";
+}
+.icon-youtube:before {
+  content: "\ea9d";
+}
+.form-control{
+  width: 60%;
+  display: inline-block;
+}
+.logo{
+  max-width: 32%
+}
+.col-md-4{
+  padding: 15px;
+}
+@media (max-width: 750px) {
+  .logo{
+    max-width: 80%
+  }
+}

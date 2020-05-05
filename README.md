@@ -11,10 +11,13 @@ El presente repositorio cuyo fin y objetivo es el de mantener informado al usuri
 ### Install
 
 Descargar:
+
 ```bash
 git clone https://github.com/Covid19-Peru/Covid19-Peru
 ```
+
 Instalar dependecias :
+
 ```bash
 npm install
 ```

@@ -1,20 +1,26 @@
-import React from 'react';
-import Navbar from './components/Navbar'
-import Footer from './components/Footer'
-import DatosMundiales from './DatosMundiales'
-import DatosCountry from './DatosCountry'
-import DatosRegionesPeru from './DatosRegionesPeru'
-import './index.css'
+import React, { Suspense, lazy } from 'react';
+import { HashRouter } from 'react-router-dom';
 
-function App (){
+import { ThemeProvider } from 'theme-ui';
+import tema from './assets/styles/css-in-js/theme';
+import Covid19 from './Covid19';
+import PantallaDeCargaPrincipal from './components/pantallas-de-carga/PantallaDeCargaPrincipal';
+import './assets/styles/css/fonts.css';
+
+
+const Layout = lazy(() => import('./layout/Layout'));
+
+function App() {
   return (
-    <div>
-      <Navbar />
-      <DatosMundiales />
-      <DatosCountry />
-      <DatosRegionesPeru />
-      <Footer />
-    </div>
+    <HashRouter>
+      <ThemeProvider theme={tema}>
+        <Suspense fallback={<PantallaDeCargaPrincipal />}>
+          <Layout>
+            <Covid19 />
+          </Layout>
+        </Suspense>
+      </ThemeProvider>
+    </HashRouter>
   );
 }
 
