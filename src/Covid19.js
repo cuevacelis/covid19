@@ -24,7 +24,6 @@ function Covid19() {
         </Suspense>
       </Switch>
     </div>
-
   );
 }
 

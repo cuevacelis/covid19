@@ -4,15 +4,15 @@ import { GoMarkGithub as GithubIcon } from 'react-icons/go';
 import { FaTwitter as TwitterIcon } from 'react-icons/fa';
 import {
   NavItem, SocialNavItem, HeaderStyle, Titulo,
-} from '../assets/styles/css-in-js/layout/Header/HeadStyle';
-import ButtonDarkStyle from '../assets/styles/css-in-js/componentes/ButtonDarkStyle';
-import logo from '../assets/img/covid_19.svg';
-import '../assets/styles/css/NavBarStyle.css';
+} from '../../assets/styles/css-in-js/componentes/layout/Header/HeadStyle';
+import ButtonDarkStyle from '../../assets/styles/css-in-js/componentes/ButtonDarkStyle';
+import logo from '../../assets/img/covid_19.svg';
+import '../../assets/styles/css/NavBarStyle.css';
 
 
 export default function Header() {
   return (
-    <HeaderStyle className="navbar_css">
+    <HeaderStyle>
       <div className="div_navigation">
         <Link to="/" className="css_link_img">
           <img src={logo} alt="logo" className="css_logo" />
@@ -20,9 +20,9 @@ export default function Header() {
         </Link>
         <nav className="nav_navigation">
           <ul className="css_list">
-            <NavItem linkTo="/coide-source">About</NavItem>
+            { /* <NavItem linkTo="/coide-source">About</NavItem> */}
             <NavItem linkTo="/about">Desarrolladores</NavItem>
-            <NavItem linkTo="/prevencion">Recomendaciones</NavItem>
+            { /* <NavItem linkTo="/prevencion">Recomendaciones</NavItem> */}
           </ul>
         </nav>
         <div className="css_icons">

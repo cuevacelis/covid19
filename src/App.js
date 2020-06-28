@@ -1,14 +1,12 @@
 import React, { Suspense, lazy } from 'react';
 import { HashRouter } from 'react-router-dom';
-
 import { ThemeProvider } from 'theme-ui';
 import tema from './assets/styles/css-in-js/theme';
-import Covid19 from './Covid19';
 import PantallaDeCargaPrincipal from './components/pantallas-de-carga/PantallaDeCargaPrincipal';
 import './assets/styles/css/fonts.css';
 
-
-const Layout = lazy(() => import('./layout/Layout'));
+const Layout = lazy(() => import('./components/layout/Layout'));
+const Covid19 = lazy(() => import('./Covid19'));
 
 function App() {
   return (

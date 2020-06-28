@@ -7,11 +7,9 @@ function PantallaDeCargaPrincipal() {
     <div className="Loading">
       <div>
         <img src={ImagenPantallaDeCarga} alt="Pantalla de Carga" />
-        <h1>Cargando ...</h1>
+        <h1>Covid19</h1>
         <div className="d-flex justify-content-center">
-          <div className="spinner-border text-info" role="status">
-            <span className="sr-only">Cargando...</span>
-          </div>
+          <div className="spinner-border text-info" role="status" />
         </div>
       </div>
     </div>

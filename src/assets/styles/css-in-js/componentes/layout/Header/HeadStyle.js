@@ -35,12 +35,14 @@ export function Titulo({ children }) {
 }
 export function HeaderStyle({ children }) {
   return (
-    <header sx={{
-      bg: 'background',
-      borderBottomStyle: 'solid',
-      borderBottomColor: 'borderNavbar',
-      borderBottomWidth: '1px',
-    }}
+    <header
+      sx={{
+        bg: 'background',
+        borderBottomStyle: 'solid',
+        borderBottomColor: 'borderNavbar',
+        borderBottomWidth: '1px',
+      }}
+      className="navbar_css"
     >
       {children}
     </header>

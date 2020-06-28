@@ -24,7 +24,6 @@
     overflow: visible;
     align-items: center;
     display: flex;
-    text-decoration: none;
 }
 @media (max-width: 750px) {
     .css_link_img {
@@ -67,8 +66,10 @@
     display: block;
     font-size: 3;
     position: relative;
-    text-decoration: none;
     line-height: calc(3.6rem);
+}
+a:link, a:visited, a:active {
+    text-decoration:none;
 }
 .css_icons{
     display: flex;
