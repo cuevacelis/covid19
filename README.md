@@ -10,9 +10,9 @@ El presente repositorio cuyo fin y objetivo es el de mantener informado al usuri
 
 ## Tecnologias y Herramientas
 
-### Bootstrap v5
-### React version experimental
-### Axios (consumo de la api)
+1. Bootstrap v5
+2. React version experimental
+3. Axios (consumo de la api)
 
 ### Install
 
