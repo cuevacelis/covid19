@@ -10,9 +10,9 @@ El presente repositorio cuyo fin y objetivo es el de mantener informado al usuri
 
 ## Tecnologias y Herramientas
 
-1. Bootstrap v5
-2. React version experimental
-3. Axios (consumo de la api)
+- Bootstrap v5
+- React version experimental
+- Axios (consumo de la api)
 
 ### Install
 
@@ -29,5 +29,7 @@ npm install or yarn install
 ```
 
 ---
+
+![Captura](https://raw.githubusercontent.com/cuevacelis/covid19/master/github/Captura.jpg)
 
 
