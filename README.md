@@ -30,6 +30,4 @@ npm install or yarn install
 
 ---
 
-![Captura](https://raw.githubusercontent.com/cuevacelis/covid19/master/github/Captura.jpg)
-
-
+![Captura](https://raw.githubusercontent.com/cuevacelis/covid19/master/github/Captura.JPG)
