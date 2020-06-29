@@ -2,7 +2,7 @@ Este proyecto fue arrancado con [Create React App](https://github.com/facebook/c
 
 # Web de Covid-19
 
-Ejemplo sencillo de Covid-19 con React, mira el proyecto original sigue el nuevo enlace [AQUI](https://github.com/Covid19-Peru/Covid19-Peru). .<br />
+Ejemplo sencillo de Covid-19 con React, mira el proyecto original sigue el nuevo enlace [AQUI](https://github.com/cuevacelis/covid19). .<br />
 
 ## Description
 
