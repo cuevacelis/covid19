@@ -1,24 +1,26 @@
+/** @jsxRuntime classic */
 /** @jsx jsx */
+/*eslint-disable */
 import { jsx } from 'theme-ui';
 import { Link } from 'react-router-dom';
 
 export function SocialNavItem({ href, title, children }) {
   return (
     <a
-      href={href}
-      title={title}
+      href={ href }
+      title={ title }
       className="css_icon"
-      sx={{ color: 'socialLink' }}
+      sx={ { color: 'socialLink' } }
     >
-      {children}
+      {children }
     </a>
   );
 }
 export function NavItem({ linkTo, children }) {
   return (
-    <li className="css_nav_item" style={{ fontFamily: 'Roboto, sans-serif' }}>
-      <Link to={linkTo} className="css_nav_item_a" sx={{ color: 'link' }}>
-        {children}
+    <li className="css_nav_item" style={ { fontFamily: 'Roboto, sans-serif' } }>
+      <Link to={ linkTo } className="css_nav_item_a" sx={ { color: 'link' } }>
+        { children }
       </Link>
     </li>
   );
@@ -26,25 +28,25 @@ export function NavItem({ linkTo, children }) {
 export function Titulo({ children }) {
   return (
     <span
-      sx={{ fontWeight: 'bold', color: 'text' }}
-      style={{ fontFamily: 'Roboto, sans-serif' }}
+      sx={ { fontWeight: 'bold', color: 'text' } }
+      style={ { fontFamily: 'Roboto, sans-serif' } }
     >
-      {children}
+      {children }
     </span>
   );
 }
 export function HeaderStyle({ children }) {
   return (
     <header
-      sx={{
+      sx={ {
         bg: 'background',
         borderBottomStyle: 'solid',
         borderBottomColor: 'borderNavbar',
         borderBottomWidth: '1px',
-      }}
+      } }
       className="navbar_css"
     >
-      {children}
+      {children }
     </header>
   );
 }

@@ -22,7 +22,7 @@
 }
 
 .shadow-sm {
-  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+  box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
 }
 
 .product-device-2 {
@@ -32,21 +32,26 @@
   left: 5%;
   background-color: #e5e5e5;
 }
- /*Conjunto flexible*/
-.flex-equal > * {
+
+/*Conjunto flexible*/
+.flex-equal>* {
   -ms-flex: 1;
   flex: 1;
 }
+
 @media (min-width: 768px) {
-  .flex-md-equal > * {
+  .flex-md-equal>* {
     -ms-flex: 1;
     flex: 1;
   }
 }
 
-.overflow-hidden { overflow: hidden; }
+.overflow-hidden {
+  overflow: hidden;
+}
+
 /**/
 
-.opacity-65{
+.opacity-65 {
   opacity: 65%;
 }

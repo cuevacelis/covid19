@@ -15,14 +15,14 @@ export default function Header() {
     <HeaderStyle>
       <div className="div_navigation">
         <Link to="/" className="css_link_img">
-          <img src={logo} alt="logo" className="css_logo" />
+          <img src={ logo } alt="logo" className="css_logo" />
           <Titulo>Covid19</Titulo>
         </Link>
         <nav className="nav_navigation">
           <ul className="css_list">
-            { /* <NavItem linkTo="/coide-source">About</NavItem> */}
+            { /* <NavItem linkTo="/coide-source">About</NavItem> */ }
             <NavItem linkTo="/about">Desarrolladores</NavItem>
-            { /* <NavItem linkTo="/prevencion">Recomendaciones</NavItem> */}
+            { /* <NavItem linkTo="/prevencion">Recomendaciones</NavItem> */ }
           </ul>
         </nav>
         <div className="css_icons">

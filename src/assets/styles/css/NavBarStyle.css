@@ -1,4 +1,4 @@
-.navbar_css{
+.navbar_css {
     padding: .15rem .1rem;
     top: 0;
     left: 0;
@@ -7,7 +7,8 @@
     width: 100%;
     z-index: 1;
 }
-.div_navigation{
+
+.div_navigation {
     display: flex;
     margin: 0 auto;
     padding-left: 0.5rem;
@@ -18,28 +19,33 @@
     margin: 0 auto;
     width: 100%;
 }
-.css_link_img{
+
+.css_link_img {
     margin-right: 0.75rem;
     width: auto;
     overflow: visible;
     align-items: center;
     display: flex;
 }
+
 @media (max-width: 750px) {
     .css_link_img {
         flex-grow: 1;
         flex-shrink: 1;
     }
 }
-.css_logo{
+
+.css_logo {
     height: 2rem;
     width: auto;
     max-width: none;
     margin: 0rem;
 }
-.nav_navigation{
+
+.nav_navigation {
     display: none;
 }
+
 @media (min-width: 750px) {
     .nav_navigation {
         align-self: flex-end;
@@ -49,7 +55,7 @@
     }
 }
 
-.css_list{
+.css_list {
     align-self: flex-end;
     display: flex;
     list-style: none;
@@ -57,26 +63,33 @@
     overflow: auto;
     display: flex;
 }
-.css_nav_item{
+
+.css_nav_item {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
 }
-.css_nav_item_a{
+
+.css_nav_item_a {
     border-bottom: 2px solid transparent;
     display: block;
     font-size: 3;
     position: relative;
     line-height: calc(3.6rem);
 }
-a:link, a:visited, a:active {
-    text-decoration:none;
+
+a:link,
+a:visited,
+a:active {
+    text-decoration: none;
 }
-.css_icons{
+
+.css_icons {
     display: flex;
     box-sizing: inherit;
     line-height: calc(3.6rem);
 }
-.css_icon{
+
+.css_icon {
     align-self: flex-end;
     display: block;
     position: relative;

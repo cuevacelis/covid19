@@ -11,8 +11,8 @@ const Covid19 = lazy(() => import('./Covid19'));
 function App() {
   return (
     <HashRouter>
-      <ThemeProvider theme={tema}>
-        <Suspense fallback={<PantallaDeCargaPrincipal />}>
+      <ThemeProvider theme={ tema }>
+        <Suspense fallback={ <PantallaDeCargaPrincipal /> }>
           <Layout>
             <Covid19 />
           </Layout>

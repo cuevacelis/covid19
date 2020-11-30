@@ -12,15 +12,15 @@ const PrevenirElCovid19 = lazy(() => import('./pages/informacion/PrevenirElCovid
 
 function Covid19() {
   return (
-    <div className="contenido" style={{ paddingTop: '100px' }}>
+    <div className="contenido" style={ { paddingTop: '100px' } }>
       <Switch>
-        <Suspense fallback={<div>cargando..</div>}>
+        <Suspense fallback={ <div>cargando..</div> }>
           <Route exact path="/">
             <DatosMundiales />
           </Route>
-          <Route path="/about" component={AcercaDeLosDesarrolladores} />
-          <Route path="/coide-source" component={ComoHicimosLaPagina} />
-          <Route path="/prevencion" component={PrevenirElCovid19} />
+          <Route path="/about" component={ AcercaDeLosDesarrolladores } />
+          <Route path="/coide-source" component={ ComoHicimosLaPagina } />
+          <Route path="/prevencion" component={ PrevenirElCovid19 } />
         </Suspense>
       </Switch>
     </div>

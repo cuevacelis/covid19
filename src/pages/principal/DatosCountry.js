@@ -42,103 +42,103 @@ function DatosCountry() {
     <>
       <section className="container text-center DatosCountry">
         <div className="text-center">
-          <hr sx={{ borderBottomStyle: 'solid', borderBottomColor: 'borderNavbar', borderBottomWidth: '1px' }} />
+          <hr sx={ { borderBottomStyle: 'solid', borderBottomColor: 'borderNavbar', borderBottomWidth: '1px' } } />
           <div className="my-3 container">
             <h1 className="titulo-seccion">Selecciona tu País</h1>
             <div className="container form-group">
-              <select id="select_country" value={indexDatosCountry} data-live-search="true" data-show-subtext="true" className="custom-select" onChange={(e) => setIndexDatosCountry(e.currentTarget.value)} sx={{ backgroundColor: 'transparent', color: 'text', maxWidth: '300px' }}>
+              <select id="select_country" value={ indexDatosCountry } data-live-search="true" data-show-subtext="true" className="custom-select" onChange={ (e) => setIndexDatosCountry(e.currentTarget.value) } sx={ { backgroundColor: 'transparent', color: 'text', maxWidth: '300px' } }>
                 {
                   loadingCounrty
                     ? <option>Obteniendo datos ...</option>
                     : datosCountry.map((datoCountry, index) => (
-                      <option key={index} value={index}>{`${datoCountry.country} - Top: ${index + 1}`}</option>
+                      <option key={ index } value={ index }>{ `${datoCountry.country} - Top: ${index + 1}` }</option>
                     ))
                 }
               </select>
             </div>
-            <button className="btn btn-primary" onClick={() => setActualizarComponente(!actualizarComponente)}>Actualizar información ahora</button>
+            <button className="btn btn-primary" onClick={ () => setActualizarComponente(!actualizarComponente) }>Actualizar información ahora</button>
           </div>
 
           <div className="container">
             <div className="row">
-              <div className="col-md-4" sx={{ color: 'casosCoronavirus' }}>
+              <div className="col-md-4" sx={ { color: 'casosCoronavirus' } }>
                 <h2>Casos de Coronavirus</h2>
-                {loadingCounrty ? <p>Casos de Covid-19 en ...</p> : (
+                { loadingCounrty ? <p>Casos de Covid-19 en ...</p> : (
                   <p>
                     Casos de Covid-19 en
-                    {' '}
-                    {datosCountry[indexDatosCountry].country}
+                    {' ' }
+                    {datosCountry[indexDatosCountry].country }
                     .
                   </p>
-                )}
+                ) }
                 <div className="casesPeru">
-                  {loadingCounrty ? <div className="spinner-border text-primary" role="status" /> : <h4 className="">{datosCountry[indexDatosCountry].total}</h4>}
+                  { loadingCounrty ? <div className="spinner-border text-primary" role="status" /> : <h4 className="">{ datosCountry[indexDatosCountry].total }</h4> }
                 </div>
               </div>
-              <div className="col-md-4" sx={{ color: 'nuevosCasos' }}>
+              <div className="col-md-4" sx={ { color: 'nuevosCasos' } }>
                 <h2>Nuevos Casos</h2>
-                {loadingCounrty ? <p>Nuevos casos de Covid-19 en</p>
+                { loadingCounrty ? <p>Nuevos casos de Covid-19 en</p>
                   : (
                     <p>
                       Nuevos casos de Covid-19 en
-                      {datosCountry[indexDatosCountry].country}
+                      {datosCountry[indexDatosCountry].country }
                     </p>
-                  )}
+                  ) }
                 <div className="deathsPeru">
-                  {loadingCounrty ? <div className="spinner-border text-primary" role="status" /> : <h4 className="">{datosCountry[indexDatosCountry].newCases}</h4>}
+                  { loadingCounrty ? <div className="spinner-border text-primary" role="status" /> : <h4 className="">{ datosCountry[indexDatosCountry].newCases }</h4> }
                 </div>
               </div>
-              <div className="col-md-4" sx={{ color: 'totalMuertes' }}>
+              <div className="col-md-4" sx={ { color: 'totalMuertes' } }>
                 <h2>Total de Muertes</h2>
-                {loadingCounrty ? <p>Total de muertes causadas por el Covid-19 en ...</p>
+                { loadingCounrty ? <p>Total de muertes causadas por el Covid-19 en ...</p>
                   : (
                     <p>
                       Total de muertes causadas por el Covid-19 en
-                      {' '}
-                      {datosCountry[indexDatosCountry].country}
+                      {' ' }
+                      {datosCountry[indexDatosCountry].country }
                       .
                     </p>
-                  )}
+                  ) }
                 <div className="deathsPeru">
-                  {loadingCounrty ? <div className="spinner-border text-danger" role="status" /> : <h4 className="">{datosCountry[indexDatosCountry].totalDeaths}</h4>}
+                  { loadingCounrty ? <div className="spinner-border text-danger" role="status" /> : <h4 className="">{ datosCountry[indexDatosCountry].totalDeaths }</h4> }
                 </div>
               </div>
-              <div className="col-md-4" sx={{ color: 'nuevasMuertes' }}>
+              <div className="col-md-4" sx={ { color: 'nuevasMuertes' } }>
                 <h2>Nuevas Muertes</h2>
-                {loadingCounrty ? <p>Nuevas muertes Covid-19 en ...</p> : (
+                { loadingCounrty ? <p>Nuevas muertes Covid-19 en ...</p> : (
                   <p>
                     Nuevas muertes Covid-19 en
-                    {datosCountry[indexDatosCountry].country}
+                    {datosCountry[indexDatosCountry].country }
                   </p>
-                )}
+                ) }
                 <div className="deathsPeru">
-                  {loadingCounrty ? <div className="spinner-border text-danger" role="status" /> : <h4 className="">{datosCountry[indexDatosCountry].newDeaths}</h4>}
+                  { loadingCounrty ? <div className="spinner-border text-danger" role="status" /> : <h4 className="">{ datosCountry[indexDatosCountry].newDeaths }</h4> }
                 </div>
               </div>
-              <div className="col-md-4" sx={{ color: 'casosSerios' }}>
+              <div className="col-md-4" sx={ { color: 'casosSerios' } }>
                 <h2>Casos Serios</h2>
-                {loadingCounrty ? <p>Total de casos graves ocasionados por el Covid-19 en</p>
+                { loadingCounrty ? <p>Total de casos graves ocasionados por el Covid-19 en</p>
                   : (
                     <p>
                       Total de casos graves ocasionados por el Covid-19 en
-                      {datosCountry[indexDatosCountry].country}
+                      {datosCountry[indexDatosCountry].country }
                     </p>
-                  )}
+                  ) }
                 <div className="deathsPeru">
-                  {loadingCounrty ? <div className="spinner-border text-primary" role="status" /> : <h4 className="">{datosCountry[indexDatosCountry].serious}</h4>}
+                  { loadingCounrty ? <div className="spinner-border text-primary" role="status" /> : <h4 className="">{ datosCountry[indexDatosCountry].serious }</h4> }
                 </div>
               </div>
-              <div className="col-md-4" sx={{ color: 'casosRecuperados' }}>
+              <div className="col-md-4" sx={ { color: 'casosRecuperados' } }>
                 <h2>Casos Recuperados</h2>
-                {loadingCounrty ? <p>La cantidad de personas que se recuperaron del Covid-19 en</p>
+                { loadingCounrty ? <p>La cantidad de personas que se recuperaron del Covid-19 en</p>
                   : (
                     <p>
                       La cantidad de personas que se recuperaron del Covid-19 en
-                      {datosCountry[indexDatosCountry].country}
+                      {datosCountry[indexDatosCountry].country }
                     </p>
-                  )}
+                  ) }
                 <div className="recoveredPeru">
-                  {loadingCounrty ? <div className="spinner-border text-success" role="status" /> : <h4 className="">{datosCountry[indexDatosCountry].totalRecovered}</h4>}
+                  { loadingCounrty ? <div className="spinner-border text-success" role="status" /> : <h4 className="">{ datosCountry[indexDatosCountry].totalRecovered }</h4> }
                 </div>
               </div>
 

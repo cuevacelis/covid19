@@ -1,14 +1,16 @@
+/** @jsxRuntime classic */
 /** @jsx jsx */
+/*eslint-disable */
 import { jsx } from 'theme-ui';
 
 function FooterStyle() {
   return (
     <hr
-      sx={{
+      sx={ {
         borderBottomStyle: 'solid',
         borderBottomColor: 'borderNavbar',
         borderBottomWidth: '1px',
-      }}
+      } }
     />
   );
 }

@@ -11,7 +11,7 @@ export default function AcercaDeLosDesarrolladores() {
     <div className="container marketing">
       <div className="row">
         <div className="col-lg-4">
-          <img alt="Adrian Alva" className="bd-placeholder-img rounded-circle" width="140" height="140" src={Foto1} preserveAspectRatio="xMidYMid slice" focusable="false" aria-label="Placeholder: 140x140" />
+          <img alt="Adrian Alva" className="bd-placeholder-img rounded-circle" width="140" height="140" src={ Foto1 } preserveAspectRatio="xMidYMid slice" focusable="false" aria-label="Placeholder: 140x140" />
           <h2>Adrian Alva Tiznado</h2>
           <p>Diseñador Front-End y Desarrollador De Software.</p>
           <p>
@@ -22,7 +22,7 @@ export default function AcercaDeLosDesarrolladores() {
           <p><a className="btn btn-secondary" href="https://www.linkedin.com/in/adrianalvatiznado/" target="_blank" rel="noopener noreferrer" role="button">Ver más detalles »</a></p>
         </div>
         <div className="col-lg-4">
-          <img alt="Jose Cueva Celis" className="bd-placeholder-img rounded-circle" width="140" height="140" src={Foto2} preserveAspectRatio="xMidYMid slice" focusable="false" aria-label="Placeholder: 140x140" />
+          <img alt="Jose Cueva Celis" className="bd-placeholder-img rounded-circle" width="140" height="140" src={ Foto2 } preserveAspectRatio="xMidYMid slice" focusable="false" aria-label="Placeholder: 140x140" />
           <h2>José Cueva Celis</h2>
           <p>Programador Back-End, Front-End y Fundador.</p>
           <p>
@@ -33,7 +33,7 @@ export default function AcercaDeLosDesarrolladores() {
           <p><a className="btn btn-secondary" href="https://www.linkedin.com/in/cuevacelis/" target="_blank" rel="noopener noreferrer" role="button">Ver más detalles »</a></p>
         </div>
         <div className="col-lg-4">
-          <img alt="Anderson Perales" className="bd-placeholder-img rounded-circle" width="140" height="140" src={Foto3} preserveAspectRatio="xMidYMid slice" focusable="false" aria-label="Placeholder: 140x140" />
+          <img alt="Anderson Perales" className="bd-placeholder-img rounded-circle" width="140" height="140" src={ Foto3 } preserveAspectRatio="xMidYMid slice" focusable="false" aria-label="Placeholder: 140x140" />
           <h2>Anderson Perales</h2>
           <p>Programador Front-End, Base de Datos en SQLServer y Documentación de Proyectos.</p>
           <p>
