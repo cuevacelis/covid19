@@ -9,7 +9,7 @@
     "axios": "^0.21.0",
     "bootstrap": "^5.0.0-alpha3",
     "npm-check-updates": "^10.2.2",
-    "react": "0.0.0-experimental-e5d06e34b",
+    "react": "0.14.0",
     "react-dom": "0.0.0-experimental-e5d06e34b",
     "react-icons": "^4.1.0",
     "react-router-dom": "^5.2.0",
