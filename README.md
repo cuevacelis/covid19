@@ -25,7 +25,7 @@ git clone https://github.com/Covid19-Peru/Covid19-Peru
 Instalar dependecias :
 
 ```bash
-npm install or yarn install
+npm install
 ```
 
 ---
