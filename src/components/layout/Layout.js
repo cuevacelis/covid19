@@ -1,14 +1,23 @@
-import React, { lazy } from 'react';
-
-const Header = lazy(() => import('./Header'));
-// const Layout = lazy(() => import('./Navbar'));
-const Footer = lazy(() => import('./Footer'));
+/** @jsxRuntime classic */
+/** @jsx jsx */
+import { jsx } from "theme-ui";
+import Footer from "./Footer";
+import Header from "./Header";
+import React from "react";
 
 export default function Layout({ children }) {
   return (
     <>
       <Header />
-      {children }
+      <div
+        className="contenido"
+        sx={{
+          bg: "background",
+        }}
+        style={{ paddingTop: "100px" }}
+      >
+        {children}
+      </div>
       <Footer />
     </>
   );

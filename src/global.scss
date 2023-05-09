@@ -1,0 +1,54 @@
+// $font-family-base: inherit;
+// $font-family-code: inherit;
+// $body-bg: #019df4;
+@import "../node_modules/bootstrap/scss/bootstrap";
+// @import "../node_modules/bootstrap/scss/functions";
+
+// // 2. Include any default variable overrides here
+
+// // 3. Include remainder of required Bootstrap stylesheets
+// @import "../node_modules/bootstrap/scss/variables";
+// @import "../node_modules/bootstrap/scss/maps";
+// @import "../node_modules/bootstrap/scss/mixins";
+
+// // 4. Include any optional Bootstrap components as you like
+// @import "../node_modules/bootstrap/scss/root";
+// @import "../node_modules/bootstrap/scss/reboot";
+// @import "../node_modules/bootstrap/scss/type";
+// @import "../node_modules/bootstrap/scss/images";
+// @import "../node_modules/bootstrap/scss/containers";
+// @import "../node_modules/bootstrap/scss/grid";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: 0;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+  text-rendering: geometricPrecision;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  display: block;
+  font-style: normal;
+  font-weight: 400;
+  color: #86888c;
+  font-size: 16px;
+}
+
+body::-webkit-scrollbar {
+  width: 0px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.hidden-important {
+  display: none !important;
+}

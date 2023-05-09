@@ -1,24 +1,38 @@
-import React, { Suspense, lazy } from 'react';
-import { HashRouter } from 'react-router-dom';
-import { ThemeProvider } from 'theme-ui';
-import tema from './assets/styles/css-in-js/theme';
-import PantallaDeCargaPrincipal from './components/pantallas-de-carga/PantallaDeCargaPrincipal';
-import './assets/styles/css/fonts.css';
+import React, { Suspense, lazy } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ThemeProvider } from "theme-ui";
+import tema from "./assets/styles/css-in-js/theme";
+import "./assets/styles/css/fonts.css";
+import PantallaDeCargaPrincipal from "./components/pantallas-de-carga/PantallaDeCargaPrincipal";
 
-const Layout = lazy(() => import('./components/layout/Layout'));
-const Covid19 = lazy(() => import('./Covid19'));
+const DatosMundiales = lazy(() => import("./pages/principal/DatosMundiales"));
+const AcercaDeLosDesarrolladores = lazy(() =>
+  import("./pages/informacion/AcercaDeLosDesarrolladores")
+);
+const ComoHicimosLaPagina = lazy(() =>
+  import("./pages/informacion/ComoHicimosLaPagina")
+);
+const PrevenirElCovid19 = lazy(() =>
+  import("./pages/informacion/PrevenirElCovid19")
+);
 
 function App() {
   return (
-    <HashRouter>
-      <ThemeProvider theme={ tema }>
-        <Suspense fallback={ <PantallaDeCargaPrincipal /> }>
-          <Layout>
-            <Covid19 />
-          </Layout>
-        </Suspense>
-      </ThemeProvider>
-    </HashRouter>
+    <ThemeProvider theme={tema}>
+      <Suspense fallback={<PantallaDeCargaPrincipal />}>
+        <BrowserRouter>
+          <Routes>
+            <Route exact path="/" element={<DatosMundiales />} />
+            <Route path="/about" element={<AcercaDeLosDesarrolladores />} />
+            <Route path="/coide-source" element={<ComoHicimosLaPagina />} />
+            <Route path="/prevencion" element={<PrevenirElCovid19 />} />
+          </Routes>
+          {/* <Layout>
+						<Covid19 />
+					</Layout> */}
+        </BrowserRouter>
+      </Suspense>
+    </ThemeProvider>
   );
 }
 
