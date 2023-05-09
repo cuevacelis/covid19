@@ -1,6 +1,4 @@
-import React from 'react';
-import ImagenPantallaDeCarga from '../../assets/img/covid_19.svg';
-import '../../assets/styles/css/Loading.css';
+import ImagenPantallaDeCarga from "../../assets/img/covid_19.svg";
 
 function PantallaDeCargaPrincipal() {
   return (

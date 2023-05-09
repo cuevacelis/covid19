@@ -1,11 +1,9 @@
-/** @jsxRuntime classic */
-/** @jsx jsx */
-import { jsx } from "theme-ui";
+/** @jsxImportSource theme-ui */
+
 import Footer from "./Footer";
 import Header from "./Header";
-import React from "react";
 
-export default function Layout({ children }) {
+export default function Layout({ children }: any) {
   return (
     <>
       <Header />

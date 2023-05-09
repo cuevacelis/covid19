@@ -1,27 +1,30 @@
+/** @jsxImportSource theme-ui */
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import logo from "../../assets/img/covid_19.svg";
-import "../../assets/styles/css/style.css";
-import Layout from "../../components/layout/Layout";
-
-const Separador = React.lazy(() =>
-  import("../../assets/styles/css-in-js/componentes/Separador")
-);
+import { useEffect, useState } from "react";
+import logo from "../assets/img/covid_19.svg";
+import Layout from "../components/layout/Layout";
 
 function DatosMundiales() {
-  const [dataMundial, setdataMundial] = useState({});
-  const [loadingMundial, setLoadingMundial] = useState(true);
-  const [actualizarComponente, setActualizarComponente] = useState(false);
-  let resultadoJSON;
-  useEffect(() => {
-    const ObtencionDatos = async () => {
+  const [dataMundial, setdataMundial] = useState<any>({});
+  const [loadingMundial, setLoadingMundial] = useState<boolean>(true);
+
+  const getFetchDataWorld = async () => {
+    try {
       setLoadingMundial(true);
-      resultadoJSON = await axios("https://api.covid19api.com/world/total");
+      const resultadoJSON = await axios(
+        "https://deft-crepe-fe73b5.netlify.app/.netlify/functions/server/api/coronavirus/total"
+      );
       setdataMundial(resultadoJSON.data);
       setLoadingMundial(false);
-    };
-    ObtencionDatos();
-  }, [actualizarComponente]);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getFetchDataWorld();
+  }, []);
+
   return (
     <Layout>
       <section className="container DatosMundiales">
@@ -44,7 +47,13 @@ function DatosMundiales() {
             </div>
           </section>
 
-          <Separador />
+          <hr
+            sx={{
+              borderBottomStyle: "solid",
+              borderBottomColor: "borderNavbar",
+              borderBottomWidth: "1px",
+            }}
+          />
 
           <section className="container text-center container">
             <div className="container">
@@ -53,10 +62,7 @@ function DatosMundiales() {
                 🗺️
               </span>
               <div className="my-3">
-                <button
-                  className="btn btn-primary"
-                  onClick={() => setActualizarComponente(!actualizarComponente)}
-                >
+                <button className="btn btn-primary" onClick={getFetchDataWorld}>
                   Actualizar información ahora
                 </button>
               </div>
@@ -65,7 +71,7 @@ function DatosMundiales() {
                 <div className="col-md-4" sx={{ color: "casosCoronavirus" }}>
                   <h2>Casos de Coronavirus</h2>
                   <p>
-                    Todos los casos confirmados de Covid-19 en todo el mundo.{" "}
+                    Todos los casos confirmados de Covid-19 en todo el mundo.
                   </p>
                   <div className="cases">
                     {loadingMundial ? (
@@ -74,7 +80,7 @@ function DatosMundiales() {
                         role="status"
                       />
                     ) : (
-                      <h4 className="">{dataMundial.TotalConfirmed}</h4>
+                      <h4 className="">{dataMundial.cases}</h4>
                     )}
                   </div>
                 </div>
@@ -91,7 +97,7 @@ function DatosMundiales() {
                         role="status"
                       />
                     ) : (
-                      <h4 className="">{dataMundial.TotalDeaths}</h4>
+                      <h4 className="">{dataMundial.deaths}</h4>
                     )}
                   </div>
                 </div>
@@ -105,7 +111,7 @@ function DatosMundiales() {
                         role="status"
                       />
                     ) : (
-                      <h4 className="">{dataMundial.TotalRecovered}</h4>
+                      <h4 className="">{dataMundial.recovered}</h4>
                     )}
                   </div>
                 </div>

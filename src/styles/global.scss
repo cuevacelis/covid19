@@ -2,6 +2,14 @@
 // $font-family-code: inherit;
 // $body-bg: #019df4;
 @import "../node_modules/bootstrap/scss/bootstrap";
+@import "./AcercaDeLosDesarrolladores.css";
+@import "./ComoHicimosLaPagina.css";
+@import "./EstilosGenerales.css";
+@import "./Loading.css";
+@import "./NavBarStyle.css";
+@import "./Prevencion.css";
+@import "./social.css";
+@import "./style.css";
 // @import "../node_modules/bootstrap/scss/functions";
 
 // // 2. Include any default variable overrides here
@@ -51,4 +59,24 @@ button {
 
 .hidden-important {
   display: none !important;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Playfair+Display|Merriweather|Roboto|Roboto+Slab&display=swap");
+
+h1,
+h2,
+h3,
+h4,
+p {
+  overflow-wrap: break-word;
+}
+
+.titulo {
+  font-weight: 700;
+  font-size: 3.5rem;
+}
+
+.titulo-seccion {
+  font-weight: 400;
+  font-size: 3rem;
 }

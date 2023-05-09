@@ -1,7 +1,4 @@
-/** @jsxRuntime classic */
-/** @jsx jsx */
-import { jsx } from "theme-ui";
-import FooterStyle from "../../assets/styles/css-in-js/componentes/layout/Footer/FooterStyle";
+/** @jsxImportSource theme-ui */
 
 export default function Footer() {
   return (
@@ -11,7 +8,13 @@ export default function Footer() {
       }}
       className="py-4 text-muted text-center text-small"
     >
-      <FooterStyle />
+      <hr
+        sx={{
+          borderBottomStyle: "solid",
+          borderBottomColor: "borderNavbar",
+          borderBottomWidth: "1px",
+        }}
+      />
       <p className="mb-1">Desarrollado con &hearts; en Javascript</p>
     </footer>
   );

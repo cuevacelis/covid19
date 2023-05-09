@@ -1,11 +1,7 @@
-import React from "react";
-import Foto3 from "../../assets/img/ElPapiChurro.jpg";
-import Foto1 from "../../assets/img/Un_wapo.jpg";
-import Foto2 from "../../assets/img/jose-cueva-celis.jpg";
-import "../../assets/styles/css/AcercaDeLosDesarrolladores.css";
-import "../../assets/styles/css/social.css";
-import "../../assets/styles/css/style.css";
-import Layout from "../../components/layout/Layout";
+import Foto3 from "../assets/img/ElPapiChurro.jpg";
+import Foto1 from "../assets/img/Un_wapo.jpg";
+import Foto2 from "../assets/img/jose-cueva-celis.jpg";
+import Layout from "../components/layout/Layout";
 
 export default function AcercaDeLosDesarrolladores() {
   return (
@@ -19,8 +15,6 @@ export default function AcercaDeLosDesarrolladores() {
               width="140"
               height="140"
               src={Foto1}
-              preserveAspectRatio="xMidYMid slice"
-              focusable="false"
               aria-label="Placeholder: 140x140"
             />
             <h2>Adrian Alva Tiznado</h2>
@@ -52,12 +46,10 @@ export default function AcercaDeLosDesarrolladores() {
               width="140"
               height="140"
               src={Foto2}
-              preserveAspectRatio="xMidYMid slice"
-              focusable="false"
               aria-label="Placeholder: 140x140"
             />
             <h2>José Cueva Celis</h2>
-            <p>Programador Back-End, Front-End y Fundador.</p>
+            <p>Programador FullStack JS</p>
             <p>
               Comencé este proyecto para brindar información a las personas. Me
               caracterizo por liderar proyectos, compartir mis conocimientos, y
@@ -83,8 +75,6 @@ export default function AcercaDeLosDesarrolladores() {
               width="140"
               height="140"
               src={Foto3}
-              preserveAspectRatio="xMidYMid slice"
-              focusable="false"
               aria-label="Placeholder: 140x140"
             />
             <h2>Anderson Perales</h2>

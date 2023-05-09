@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Navbar = () => (
   <header className="css-ue4yb0">
     <nav className="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom shadow-sm">

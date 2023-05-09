@@ -1,5 +1,3 @@
-import React from 'react';
-
 const NavbarSecundario = () => (
   <div>
     <p>casos del mundo</p>
