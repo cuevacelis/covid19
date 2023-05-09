@@ -72,7 +72,7 @@ export default function Header() {
         </nav>
         <div className="css_icons">
           <SocialNavItem
-            href="https://github.com/Covid19-Peru/Covid19-Peru"
+            href="https://github.com/cuevacelis/covid19"
             title="GitHub"
           >
             <GithubIcon />
