@@ -1,126 +1,136 @@
-/** @jsxImportSource theme-ui */
-import axios from "axios";
+"use client";
+
 import { useEffect, useState } from "react";
-import logo from "../assets/img/covid_19.svg";
-import Layout from "../components/layout/Layout";
+import axios from "axios";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Loader2 } from "lucide-react";
+import logo from "@/assets/img/covid_19.svg";
 
-function DatosMundiales() {
-  const [dataMundial, setdataMundial] = useState<any>({});
-  const [loadingMundial, setLoadingMundial] = useState<boolean>(true);
+interface CovidData {
+  cases: number;
+  deaths: number;
+  recovered: number;
+}
 
-  const getFetchDataWorld = async () => {
+export default function CovidDataDashboard() {
+  const [globalData, setGlobalData] = useState<CovidData | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  const fetchGlobalData = async () => {
     try {
-      setLoadingMundial(true);
-      const resultadoJSON = await axios(
+      setLoading(true);
+      const response = await axios.get<CovidData>(
         "https://deft-crepe-fe73b5.netlify.app/.netlify/functions/server/api/coronavirus/total"
       );
-      setdataMundial(resultadoJSON.data);
-      setLoadingMundial(false);
+      setGlobalData(response.data);
     } catch (error) {
-      console.error(error);
+      console.error("Error fetching data:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
   useEffect(() => {
-    getFetchDataWorld();
+    fetchGlobalData();
   }, []);
 
   return (
-    <Layout>
-      <section className="container DatosMundiales">
-        <div className=" text-center">
-          <section className="container text-center">
-            <div className="container">
-              <img
-                className="d-block mx-auto mb-4 logo"
-                src={logo}
-                alt="imgCovid19"
-              />
-              <h1 className="titulo">Datos del Covid-19</h1>
-              <p className="lead">
-                Aquí encontrarás información y noticias sobre el COVID-19 en
-                Perú y en el mundo.
-              </p>
-              <p className="text-muted">
-                <em>(Mantenemos actualizada nuestra información a diario)</em>
-              </p>
-            </div>
-          </section>
+    <div className="container mx-auto px-4 py-8">
+      <header className="text-center mb-12">
+        <img
+          src={logo}
+          alt="COVID-19 Logo"
+          className="mx-auto mb-6 h-24 w-24"
+        />
+        <h1 className="text-4xl font-bold mb-4">
+          COVID-19 Panel de control global
+        </h1>
+        <p className="text-xl text-muted-foreground mb-2">
+          Manténgase informado con las últimas estadísticas de COVID-19 de todo
+          el mundo.
+        </p>
+        <p className="text-sm text-muted-foreground italic">
+          (Actualizamos nuestra información diariamente)
+        </p>
+      </header>
 
-          <hr
-            sx={{
-              borderBottomStyle: "solid",
-              borderBottomColor: "borderNavbar",
-              borderBottomWidth: "1px",
-            }}
-          />
+      <div className="mb-8 text-center">
+        <Button onClick={fetchGlobalData} disabled={loading}>
+          {loading ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Updating...
+            </>
+          ) : (
+            "Actualizar Datos"
+          )}
+        </Button>
+      </div>
 
-          <section className="container text-center container">
-            <div className="container">
-              <h1 className="titulo-seccion">Datos del Mundo</h1>
-              <span role="img" aria-label="map">
-                🗺️
-              </span>
-              <div className="my-3">
-                <button className="btn btn-primary" onClick={getFetchDataWorld}>
-                  Actualizar información ahora
-                </button>
-              </div>
-
-              <div className="row">
-                <div className="col-md-4" sx={{ color: "casosCoronavirus" }}>
-                  <h2>Casos de Coronavirus</h2>
-                  <p>
-                    Todos los casos confirmados de Covid-19 en todo el mundo.
-                  </p>
-                  <div className="cases">
-                    {loadingMundial ? (
-                      <div
-                        className="spinner-border text-primary"
-                        role="status"
-                      />
-                    ) : (
-                      <h4 className="">{dataMundial.cases}</h4>
-                    )}
-                  </div>
-                </div>
-                <div className="col-md-4" sx={{ color: "totalMuertes" }}>
-                  <h2>Muertes</h2>
-                  <p>
-                    La cantidad de muertes causadas por el Covid-19 en todo el
-                    mundo.
-                  </p>
-                  <div className="deaths">
-                    {loadingMundial ? (
-                      <div
-                        className="spinner-border text-danger"
-                        role="status"
-                      />
-                    ) : (
-                      <h4 className="">{dataMundial.deaths}</h4>
-                    )}
-                  </div>
-                </div>
-                <div className="col-md-4" sx={{ color: "casosRecuperados" }}>
-                  <h2>Casos Recuperados</h2>
-                  <p>La cantidad de personas que se recuperaron del Covid-19</p>
-                  <div className="recovered">
-                    {loadingMundial ? (
-                      <div
-                        className="spinner-border text-success"
-                        role="status"
-                      />
-                    ) : (
-                      <h4 className="">{dataMundial.recovered}</h4>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-      </section>
-    </Layout>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <StatCard
+          title="Casos confirmados"
+          value={globalData?.cases}
+          loading={loading}
+          description="Total confirmed COVID-19 cases worldwide"
+          color="blue"
+        />
+        <StatCard
+          title="Fallecidos"
+          value={globalData?.deaths}
+          loading={loading}
+          description="Total COVID-19 related deaths worldwide"
+          color="red"
+        />
+        <StatCard
+          title="Recuperados"
+          value={globalData?.recovered}
+          loading={loading}
+          description="Total recovered COVID-19 cases worldwide"
+          color="green"
+        />
+      </div>
+    </div>
   );
 }
-export default DatosMundiales;
+
+interface StatCardProps {
+  title: string;
+  value: number | undefined;
+  loading: boolean;
+  description: string;
+  color: "blue" | "red" | "green";
+}
+
+function StatCard({
+  title,
+  value,
+  loading,
+  description,
+  color,
+}: StatCardProps) {
+  const colorClasses = {
+    blue: "bg-blue-50 border-blue-200 text-blue-700",
+    red: "bg-red-50 border-red-200 text-red-700",
+    green: "bg-green-50 border-green-200 text-green-700",
+  };
+
+  return (
+    <Card className={`${colorClasses[color]} border`}>
+      <CardHeader>
+        <CardTitle>{title}</CardTitle>
+      </CardHeader>
+      <CardContent>
+        {loading ? (
+          <Loader2 className="h-8 w-8 animate-spin mx-auto" />
+        ) : (
+          <div className="text-4xl font-bold mb-2">
+            {value?.toLocaleString()}
+          </div>
+        )}
+        <p className="text-sm">{description}</p>
+      </CardContent>
+    </Card>
+  );
+}

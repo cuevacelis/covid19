@@ -1,5 +1,3 @@
-/** @jsxImportSource theme-ui */
-
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "../assets/styles/css/style.css";
@@ -59,13 +57,7 @@ function DatosRegionesPeru() {
     <>
       <section className="container text-center DatosRegiones">
         <div className="text-center">
-          <hr
-            sx={{
-              borderBottomStyle: "solid",
-              borderBottomColor: "borderNavbar",
-              borderBottomWidth: "1px",
-            }}
-          />
+          <hr />
           <div className="my-3 container">
             <h1 className="titulo-seccion">Selecciona tu Departamento</h1>
             <div className="container form-group">
@@ -76,11 +68,6 @@ function DatosRegionesPeru() {
                 data-show-subtext="true"
                 className="custom-select"
                 onChange={(e) => setIndexDatosRegiones(e.currentTarget.value)}
-                sx={{
-                  backgroundColor: "transparent",
-                  color: "text",
-                  maxWidth: "200px",
-                }}
               >
                 {loadingRegiones ? (
                   <option>Obteniendo datos ...</option>

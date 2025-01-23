@@ -1,20 +1,13 @@
-/** @jsxImportSource theme-ui */
-
+import { Outlet } from "react-router-dom";
 import Footer from "./Footer";
 import Header from "./Header";
 
-export default function Layout({ children }: any) {
+export default function Layout() {
   return (
     <>
       <Header />
-      <div
-        className="contenido"
-        sx={{
-          bg: "background",
-        }}
-        style={{ paddingTop: "100px" }}
-      >
-        {children}
+      <div className="contenido" style={{ paddingTop: "100px" }}>
+        <Outlet />
       </div>
       <Footer />
     </>

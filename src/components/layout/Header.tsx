@@ -1,102 +1,161 @@
-/** @jsxImportSource theme-ui */
-
-import { useColorMode } from "theme-ui";
-import { FaTwitter as TwitterIcon } from "react-icons/fa";
-import { GoMarkGithub as GithubIcon } from "react-icons/go";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Twitter, Sun, Moon, Github, Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuList,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import logo from "../../assets/img/covid_19.svg";
-import { NavLink } from "react-router-dom";
-import { GiMoon as Luna } from "react-icons/gi";
-import { FaSun as Sol } from "react-icons/fa";
+import { useTheme } from "../theme-provider";
 
-export function SocialNavItem({ href, title, children }: any) {
-  return (
-    <a
-      href={href}
-      title={title}
-      className="css_icon"
-      sx={{ color: "socialLink" }}
+const NavItem = ({
+  to,
+  children,
+  onClick,
+}: {
+  to: string;
+  children: React.ReactNode;
+  onClick?: () => void;
+}) => (
+  <NavigationMenuItem>
+    <Link
+      to={to}
+      className={`${navigationMenuTriggerStyle()} w-full justify-start`}
+      onClick={onClick}
     >
       {children}
-    </a>
-  );
-}
-export function NavItem({ linkTo, children }: any) {
+    </Link>
+  </NavigationMenuItem>
+);
+
+const SocialNavItem = ({
+  href,
+  title,
+  icon: Icon,
+}: {
+  href: string;
+  title: string;
+  icon: React.ElementType;
+}) => (
+  <a
+    href={href}
+    title={title}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-muted-foreground hover:text-primary transition-colors"
+  >
+    <Icon className="h-5 w-5" />
+  </a>
+);
+
+const MobileMenu = ({ onClose }: { onClose: () => void }) => {
   return (
-    <li className="css_nav_item" style={{ fontFamily: "Roboto, sans-serif" }}>
-      <NavLink to={linkTo} className="css_nav_item_a" sx={{ color: "link" }}>
-        {children}
-      </NavLink>
-    </li>
+    <div className="flex flex-col space-y-4">
+      <NavItem to="/about" onClick={onClose}>
+        About
+      </NavItem>
+      <NavItem to="/developers" onClick={onClose}>
+        Developers
+      </NavItem>
+      <NavItem to="/recommendations" onClick={onClose}>
+        Recommendations
+      </NavItem>
+    </div>
   );
-}
-export function Titulo({ children }: any) {
-  return (
-    <span
-      sx={{ fontWeight: "bold", color: "text" }}
-      style={{ fontFamily: "Roboto, sans-serif" }}
-    >
-      {children}
-    </span>
-  );
-}
+};
 
 export default function Header() {
-  const [colorMode, setColorMode] = useColorMode();
+  const { theme, setTheme } = useTheme();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const CambioColor = () => {
-    setColorMode(colorMode === "default" ? "dark" : "default");
-  };
+  const toggleTheme = () => setTheme(theme === "dark" ? "light" : "dark");
 
   return (
-    <header
-      sx={{
-        bg: "background",
-        borderBottomStyle: "solid",
-        borderBottomColor: "borderNavbar",
-        borderBottomWidth: "1px",
-      }}
-      className="navbar_css"
-    >
-      <div className="div_navigation">
-        <Link to="/" className="css_link_img">
-          <img src={logo} alt="logo" className="css_logo" />
-          <Titulo>Covid19</Titulo>
+    <header className="border-b">
+      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+        <Link to="/" className="flex items-center space-x-2">
+          <img
+            src={logo || "/placeholder.svg"}
+            alt="Covid-19 Logo"
+            className="h-8 w-8 sm:h-10 sm:w-10"
+          />
+          <span className="text-lg sm:text-xl font-bold">Covid-19 Tracker</span>
         </Link>
-        <nav className="nav_navigation">
-          <ul className="css_list">
-            {/* <NavItem linkTo="/coide-source">About</NavItem> */}
-            <NavItem linkTo="/about">Desarrolladores</NavItem>
-            {/* <NavItem linkTo="/prevencion">Recomendaciones</NavItem> */}
-          </ul>
-        </nav>
-        <div className="css_icons">
-          <SocialNavItem
-            href="https://github.com/cuevacelis/covid19"
-            title="GitHub"
+
+        <NavigationMenu className="hidden md:flex">
+          <NavigationMenuList>
+            <NavItem to="/about">About</NavItem>
+            <NavItem to="/developers">Developers</NavItem>
+            <NavItem to="/recommendations">Recommendations</NavItem>
+          </NavigationMenuList>
+        </NavigationMenu>
+
+        <div className="flex items-center space-x-2 sm:space-x-4">
+          <div className="hidden sm:flex items-center space-x-4">
+            <SocialNavItem
+              href="https://github.com/cuevacelis/covid19"
+              title="GitHub"
+              icon={Github}
+            />
+            <SocialNavItem
+              href="https://twitter.com/Minsa_Peru?ref_src=twsrc%5Etfw"
+              title="Twitter"
+              icon={Twitter}
+            />
+          </div>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={toggleTheme}
+            aria-label={
+              theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
+            }
           >
-            <GithubIcon />
-          </SocialNavItem>
-          <SocialNavItem
-            href="https://twitter.com/Minsa_Peru?ref_src=twsrc%5Etfw"
-            title="Twitter"
-          >
-            <TwitterIcon />
-          </SocialNavItem>
-          <span
-            onClick={CambioColor}
-            tabIndex={0}
-            role="button"
-            onKeyDown={CambioColor}
-            sx={{
-              color: "socialLink",
-              fontSize: "1.25rem",
-              paddingLeft: "0.5rem",
-              paddingRight: "0.5rem",
-            }}
-          >
-            {colorMode === "default" ? <Luna /> : <Sol />}
-          </span>
+            {theme === "dark" ? (
+              <Sun className="h-5 w-5" />
+            ) : (
+              <Moon className="h-5 w-5" />
+            )}
+          </Button>
+          <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="md:hidden">
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Toggle menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+              <div className="flex flex-col h-full">
+                <div className="flex justify-between items-center mb-4">
+                  <span className="text-lg font-bold">Menu</span>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <X className="h-5 w-5" />
+                  </Button>
+                </div>
+                <MobileMenu onClose={() => setIsMobileMenuOpen(false)} />
+                <div className="mt-auto pt-4 flex justify-center space-x-4 sm:hidden">
+                  <SocialNavItem
+                    href="https://github.com/cuevacelis/covid19"
+                    title="GitHub"
+                    icon={Github}
+                  />
+                  <SocialNavItem
+                    href="https://twitter.com/Minsa_Peru?ref_src=twsrc%5Etfw"
+                    title="Twitter"
+                    icon={Twitter}
+                  />
+                </div>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </header>
